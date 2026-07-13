@@ -80,6 +80,8 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             {/* Logo / Brand Name */}
             <a href="/" className="flex items-center space-x-2">
+              <img src="/images/cycle.png" alt="Cycle" className="w-12 h-12 object-contain filter invert" /> 
+              
               <span className="font-serif text-lg sm:text-2xl font-black tracking-wide text-white flex items-center">
                 MURLI MANOHAR <span className="text-slate-100 ml-1">JAISWAL</span>
               </span>
