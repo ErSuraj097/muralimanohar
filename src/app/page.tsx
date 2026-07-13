@@ -154,21 +154,21 @@ const stalwartQuotes: StalwartQuote[] = [
     image: "/images/image-copy-2.png",
   },
   {
-    nameEn: "Prof. Ram Gopal Yadav",
-    nameHi: "प्रो. राम गोपाल यादव",
-    titleEn: "Member of Parliament, Rajya Sabha",
-    titleHi: "सांसद, राज्यसभा",
-    quoteEn: "His organizational capabilities and direct connection with the grassroots rural families in Deoria are exemplary.",
-    quoteHi: "उनकी संगठनात्मक क्षमता और देवरिया के ग्रामीण परिवारों के साथ उनका सीधा जमीनी जुड़ाव अत्यंत सराहनीय है।",
-    image: "/images/image-copy-2.png",
+    nameEn: "Late Janeshwar Mishra",
+    nameHi: "स्व. जनेश्वर मिश्र",
+    titleEn: "Socialist Ideologue (Chhote Lohia)",
+    titleHi: "समाजवादी विचारक (छोटे लोहिया)",
+    quoteEn: "Solu Jaiswal carries the genuine spirit of struggle, advocating for the farmers and weaker sections.",
+    quoteHi: "सोलू जायसवाल संघर्ष की वास्तविक भावना को धारण करते हैं, किसानों और कमजोर वर्गों के लिए हमेशा तत्पर रहते हैं।",
+    image: "/images/image.png",
   },
   {
-    nameEn: "Prof. Ram Gopal Yadav",
-    nameHi: "प्रो. राम गोपाल यादव",
-    titleEn: "Member of Parliament, Rajya Sabha",
-    titleHi: "सांसद, राज्यसभा",
-    quoteEn: "His organizational capabilities and direct connection with the grassroots rural families in Deoria are exemplary.",
-    quoteHi: "उनकी संगठनात्मक क्षमता और देवरिया के ग्रामीण परिवारों के साथ उनका सीधा जमीनी जुड़ाव अत्यंत सराहनीय है।",
+    nameEn: "Kiranmoy Nanda",
+    nameHi: "किरणमय नंदा",
+    titleEn: "National Vice President, Samajwadi Party",
+    titleHi: "राष्ट्रीय उपाध्यक्ष, समाजवादी पार्टी",
+    quoteEn: "The dedication and youth energy of Murli Manohar Jaiswal ensures the Samajwadi values fly high in Barhaj.",
+    quoteHi: "मुरली मनोहर जायसवाल का समर्पण और युवा ऊर्जा बरहज में समाजवादी मूल्यों को और अधिक मजबूत बनाती है।",
     image: "/images/image-copy-2.png",
   },
 ];
@@ -327,6 +327,7 @@ export default function Home() {
   const [galleryTab, setGalleryTab] = useState("Timeline");
   const [galleryIndex, setGalleryIndex] = useState(0);
   const [activeImpact, setActiveImpact] = useState<number | null>(null);
+  const [stalwartIndex, setStalwartIndex] = useState(0);
 
   // Auto-play hero slider
   useEffect(() => {
@@ -670,15 +671,38 @@ export default function Home() {
         {/* 5. STALWART SAYS SECTION */}
         <section className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4 mb-10">
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4 mb-8">
               <div className="bg-sp-red text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-6 py-2 rounded-r-full rounded-l-md">
                 {t("STALWART SAYS", "दिग्गजों के विचार")}
+              </div>
+              <div className="flex flex-col items-end">
+                <a href="/about" className="text-[10px] font-bold text-sp-red uppercase tracking-wider hover:underline mb-2">{t("MORE", "अधिक")}</a>
+                <div className="flex space-x-2">
+                  <button
+                    onClick={() => setStalwartIndex((prev) => (prev === 0 ? stalwartQuotes.length - 1 : prev - 1))}
+                    className="p-1 border border-slate-200 dark:border-slate-800 rounded-full hover:text-sp-red hover:border-sp-red cursor-pointer transition-colors"
+                    aria-label="Previous stalwart quote"
+                  >
+                    <ChevronLeft className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    onClick={() => setStalwartIndex((prev) => (prev + 1) % stalwartQuotes.length)}
+                    className="p-1 border border-slate-200 dark:border-slate-800 rounded-full hover:text-sp-red hover:border-sp-red cursor-pointer transition-colors"
+                    aria-label="Next stalwart quote"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {stalwartQuotes.map((sq, idx) => (
-                <div key={idx} className="border border-slate-200 dark:border-slate-800 rounded-3xl p-6 flex items-center space-x-4 bg-white shadow-sm">
+              {[
+                stalwartQuotes[stalwartIndex],
+                stalwartQuotes[(stalwartIndex + 1) % stalwartQuotes.length],
+                stalwartQuotes[(stalwartIndex + 2) % stalwartQuotes.length]
+              ].map((sq, idx) => (
+                <div key={idx} className="border border-slate-200 dark:border-slate-800 rounded-3xl p-6 flex items-center space-x-4 bg-white shadow-sm transition-all duration-300 animate-fadeIn">
                   <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-sp-red" style={{ position: "relative" }}>
                     <Image
                       src={sq.image}
