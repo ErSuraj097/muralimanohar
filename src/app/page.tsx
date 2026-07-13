@@ -39,7 +39,7 @@ const heroSlides: HeroSlide[] = [
     titleHi: "“इतिहास के अध्येता”",
     subEn: "Dedicated to the regional heritage, education, and rural prosperity.",
     subHi: "भारत की क्षेत्रीय विरासत, शिक्षा और ग्रामीण समृद्धि के लिए समर्पित।",
-    image: "/images/image-copy-3.png",
+    image: "/images/hero-1.png",
     textPosition: "right",
   },
   {
@@ -47,7 +47,7 @@ const heroSlides: HeroSlide[] = [
     titleHi: "“युवाओं के मार्गदर्शक”",
     subEn: "Creating job skills, sports programs, and technical education hubs.",
     subHi: "कौशल विकास, खेलकूद और तकनीकी शिक्षा के नए अवसरों का सृजन।",
-    image: "/images/image-copy-4.png",
+    image: "/images/hero-2.png",
     textPosition: "left",
   },
   {
@@ -55,7 +55,15 @@ const heroSlides: HeroSlide[] = [
     titleHi: "“कला एवं संस्कृति प्रेमी”",
     subEn: "Supporting local artisans, folk festivals, and sports drives.",
     subHi: "स्थानीय शिल्पकारों, लोक उत्सवों और खेल अभियानों को निरंतर प्रोत्साहन।",
-    image: "/images/image-copy-2.png",
+    image: "/images/hero,png",
+    textPosition: "right",
+  },
+  {
+    titleEn: "“ART & CULTURE LOVER”",
+    titleHi: "“कला एवं संस्कृति प्रेमी”",
+    subEn: "Supporting local artisans, folk festivals, and sports drives.",
+    subHi: "स्थानीय शिल्पकारों, लोक उत्सवों और खेल अभियानों को निरंतर प्रोत्साहन।",
+    image: "/images/hero.png",
     textPosition: "right",
   },
 ];
@@ -341,15 +349,15 @@ export default function Home() {
 
       {/* Left side floating theme controls */}
       <div className="fixed left-4 top-1/2 -translate-y-1/2 z-30 flex flex-col items-center bg-slate-950/90 border border-slate-800/80 backdrop-blur rounded-full py-4 px-2 space-y-4 shadow-lg text-white select-none">
-        <button 
-          className="w-5 h-5 rounded-full bg-white border border-slate-300 cursor-pointer" 
-          title="Light Theme" 
-          onClick={() => { document.documentElement.classList.remove('dark'); localStorage.setItem('theme', 'light'); }} 
+        <button
+          className="w-5 h-5 rounded-full bg-white border border-slate-300 cursor-pointer"
+          title="Light Theme"
+          onClick={() => { document.documentElement.classList.remove('dark'); localStorage.setItem('theme', 'light'); }}
         />
-        <button 
-          className="w-5 h-5 rounded-full bg-slate-800 border border-slate-600 cursor-pointer" 
-          title="Dark Theme" 
-          onClick={() => { document.documentElement.classList.add('dark'); localStorage.setItem('theme', 'dark'); }} 
+        <button
+          className="w-5 h-5 rounded-full bg-slate-800 border border-slate-600 cursor-pointer"
+          title="Dark Theme"
+          onClick={() => { document.documentElement.classList.add('dark'); localStorage.setItem('theme', 'dark'); }}
         />
         <div className="text-[10px] font-bold border-t border-slate-800 pt-2 cursor-help hover:text-sp-red" title="Text Size">Tт</div>
       </div>
@@ -362,7 +370,7 @@ export default function Home() {
       </div>
 
       <main className="flex-grow pt-14">
-        
+
         {/* 1. HERO SLIDESHOW SECTION */}
         <section id="home" className="relative min-h-[92vh] flex items-end justify-start overflow-hidden bg-slate-950 text-white py-20">
           <ParticleBackground />
@@ -372,9 +380,8 @@ export default function Home() {
           {heroSlides.map((slide, idx) => (
             <div
               key={idx}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                idx === currentSlide ? "opacity-50 z-0" : "opacity-0 z-0"
-              }`}
+              className={`absolute inset-0 transition-opacity duration-1000 ${idx === currentSlide ? "opacity-100 z-0" : "opacity-0 z-0"
+                }`}
               style={{ position: "absolute" }}
             >
               <Image
@@ -384,40 +391,37 @@ export default function Home() {
                 priority={idx === 0}
                 className="object-cover object-top"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-flag-saffron/10 via-transparent to-flag-green/10 pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-slate-950 via-slate-950/20 to-transparent" />
+              {/* <div className="absolute inset-0 bg-gradient-to-r from-flag-saffron/10 via-transparent to-flag-green/10 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-slate-950 via-slate-950/20 to-transparent" /> */}
             </div>
           ))}
-          
-          <div className={`max-w-7xl mx-auto px-6 sm:px-12 md:px-20 relative z-10 w-full mb-8 sm:mb-12 flex flex-col ${
-            heroSlides[currentSlide].textPosition === "right" ? "items-end text-right ml-auto" : "items-start text-left mr-auto"
-          }`}>
+
+          <div className={`max-w-7xl mx-auto px-6 sm:px-12 md:px-20 relative z-10 w-full mb-8 sm:mb-12 flex flex-col ${heroSlides[currentSlide].textPosition === "right" ? "items-end text-right ml-auto" : "items-start text-left mr-auto"
+            }`}>
             <div className="max-w-2xl space-y-4">
-              <span className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sp-red text-white text-[10px] font-bold uppercase tracking-widest ${
-                heroSlides[currentSlide].textPosition === "right" ? "self-end" : "self-start"
-              }`}>
+              <span className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sp-red text-white text-[10px] font-bold uppercase tracking-widest ${heroSlides[currentSlide].textPosition === "right" ? "self-end" : "self-start"
+                }`}>
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>{t("SAMAJWADI PARTY LEADER", "समाजवादी पार्टी नेता")}</span>
               </span>
-              
+
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-black tracking-wider leading-none text-flag-saffron transition-all duration-700 uppercase filter drop-shadow-md">
                 {t(heroSlides[currentSlide].titleEn, heroSlides[currentSlide].titleHi)}
               </h1>
-              
+
               <p className="text-slate-300 text-xs sm:text-sm font-medium font-sans tracking-widest">
                 {t(heroSlides[currentSlide].subEn, heroSlides[currentSlide].subHi)}
               </p>
             </div>
           </div>
-          
+
           <div className="absolute bottom-8 right-8 flex space-x-2 z-20">
             {heroSlides.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentSlide(idx)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  idx === currentSlide ? "bg-sp-red w-8" : "bg-slate-700 hover:bg-slate-500"
-                }`}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${idx === currentSlide ? "bg-sp-red w-8" : "bg-slate-700 hover:bg-slate-500"
+                  }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
             ))}
@@ -428,7 +432,7 @@ export default function Home() {
         <section className="py-20 bg-white border-b border-slate-200/50 dark:border-slate-800/50">
           <div className="max-w-6xl mx-auto px-6 sm:px-12">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-              
+
               {/* Video Frame Left */}
               <div className="md:col-span-7 relative h-[250px] sm:h-[350px] rounded-3xl overflow-hidden shadow-lg" style={{ position: "relative" }}>
                 <Image
@@ -458,7 +462,7 @@ export default function Home() {
                     "क्षेत्रीय संगठनात्मक बैठकों को संबोधित करते हुए, प्रमुख शासन पहलों को परिभाषित करते हुए और जमीनी स्तर पर विकास कार्यों का रोडमैप तैयार करते हुए।"
                   )}
                 </p>
-                
+
                 {/* Indicator dots */}
                 <div className="flex space-x-2 pt-4">
                   <div className="w-2.5 h-2.5 rounded-full bg-sp-red animate-pulse" />
@@ -475,7 +479,7 @@ export default function Home() {
         {/* 3. INTERACTIVE IMPACT BLOCK (EXACT DUPLICATE OF FRAME 008.PNG) */}
         <section className="py-24 bg-white border-b border-slate-100 dark:border-slate-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
+
             {/* Header */}
             <div className="text-center mb-16 space-y-4">
               <span className="text-xs uppercase font-extrabold tracking-widest text-sp-red">
@@ -488,7 +492,7 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              
+
               {/* Left Column: Big Core Metric Circle */}
               <div className="lg:col-span-4 flex justify-center">
                 <div className="w-[280px] sm:w-[330px] aspect-square rounded-full border border-sp-red/30 flex flex-col items-center justify-center p-8 text-center shadow-sm relative">
@@ -511,7 +515,7 @@ export default function Home() {
               <div className="lg:col-span-8">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                   {impactCards.map((card) => (
-                    <div 
+                    <div
                       key={card.id}
                       className="border border-slate-200 dark:border-slate-800 rounded-2xl p-5 hover:border-sp-red transition-colors cursor-pointer flex flex-col justify-between h-[180px] bg-white"
                       onClick={() => toggleImpact(card.id)}
@@ -524,11 +528,10 @@ export default function Home() {
                           {t(card.descEn, card.descHi)}
                         </p>
                       </div>
-                      
+
                       <div className="flex justify-center pt-2 text-slate-400 hover:text-sp-red">
-                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${
-                          activeImpact === card.id ? "rotate-180 text-sp-red" : "rotate-0"
-                        }`} />
+                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${activeImpact === card.id ? "rotate-180 text-sp-red" : "rotate-0"
+                          }`} />
                       </div>
                     </div>
                   ))}
@@ -555,7 +558,7 @@ export default function Home() {
         {/* 4. JOURNEY (HORIZONTAL INTERACTIVE TIMELINE SECTION) */}
         <section className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
           <div className="max-w-6xl mx-auto px-6">
-            
+
             {/* Control line */}
             <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4 mb-8">
               <div className="bg-sp-red text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-6 py-2 rounded-r-full rounded-l-md">
@@ -586,14 +589,12 @@ export default function Home() {
                   onClick={() => setJourneyIndex(idx)}
                   className="relative z-10 flex flex-col items-center space-y-2 shrink-0 px-4 cursor-pointer"
                 >
-                  <span className={`text-[10px] sm:text-xs font-bold transition-all ${
-                    idx === journeyIndex ? "text-sp-red font-black scale-105" : "text-slate-400 dark:text-slate-600"
-                  }`}>
+                  <span className={`text-[10px] sm:text-xs font-bold transition-all ${idx === journeyIndex ? "text-sp-red font-black scale-105" : "text-slate-400 dark:text-slate-600"
+                    }`}>
                     {t(evt.year, evt.year === "Present" ? "वर्तमान" : evt.year)}
                   </span>
-                  <div className={`w-3 h-3 rounded-full transition-all ${
-                    idx === journeyIndex ? "bg-sp-red ring-4 ring-sp-red/20 scale-110" : "bg-slate-300 dark:bg-slate-700"
-                  }`} />
+                  <div className={`w-3 h-3 rounded-full transition-all ${idx === journeyIndex ? "bg-sp-red ring-4 ring-sp-red/20 scale-110" : "bg-slate-300 dark:bg-slate-700"
+                    }`} />
                 </button>
               ))}
             </div>
@@ -669,9 +670,9 @@ export default function Home() {
         {/* 6. VIDEO GALLERY & DONATE SECTION */}
         <section id="video-gallery" className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
           <div className="max-w-6xl mx-auto px-6">
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              
+
               {/* Left Video Player Box */}
               <div className="lg:col-span-8 space-y-4">
                 <div className="bg-sp-red text-white text-xs font-bold tracking-widest uppercase px-6 py-2 rounded-r-full rounded-l-md w-max mb-6">
@@ -709,11 +710,10 @@ export default function Home() {
                       <div
                         key={vid.id}
                         onClick={() => setActiveVideo(idx)}
-                        className={`border rounded-xl p-2 cursor-pointer flex items-center space-x-2 transition-all ${
-                          idx === activeVideo
-                            ? "border-sp-red bg-sp-red/5"
-                            : "border-slate-200 dark:border-slate-800 hover:border-sp-red"
-                        }`}
+                        className={`border rounded-xl p-2 cursor-pointer flex items-center space-x-2 transition-all ${idx === activeVideo
+                          ? "border-sp-red bg-sp-red/5"
+                          : "border-slate-200 dark:border-slate-800 hover:border-sp-red"
+                          }`}
                       >
                         <div className="relative w-12 h-10 rounded overflow-hidden shrink-0" style={{ position: "relative" }}>
                           <Image
@@ -736,11 +736,11 @@ export default function Home() {
               <div className="lg:col-span-4 flex items-center justify-center">
                 <div className="w-full max-w-sm rounded-[2rem] bg-sp-red text-white p-8 text-center shadow-lg flex flex-col justify-center space-y-6 relative overflow-hidden">
                   <div className="absolute -top-12 -left-12 w-28 h-28 bg-white/5 rounded-full" />
-                  
+
                   <h3 className="text-lg font-serif font-black tracking-widest uppercase border-b border-white/20 pb-3">
                     {t("DONATE", "सहयोग करें")}
                   </h3>
-                  
+
                   <div className="space-y-3">
                     <a
                       href="/contact"
@@ -772,7 +772,7 @@ export default function Home() {
         {/* 7. IMAGE GALLERY SECTION */}
         <section className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
           <div className="max-w-6xl mx-auto px-6">
-            
+
             <div className="bg-sp-red text-white text-xs font-bold tracking-widest uppercase px-6 py-2 rounded-r-full rounded-l-md w-max mb-6">
               {t("IMAGE GALLERY", "चित्र गैलरी")}
             </div>
@@ -780,17 +780,15 @@ export default function Home() {
             <div className="flex space-x-6 border-b border-slate-200 dark:border-slate-800 pb-3 mb-8 text-xs font-bold">
               <button
                 onClick={() => { setGalleryTab("Timeline"); setGalleryIndex(0); }}
-                className={`pb-3 cursor-pointer transition-all ${
-                  galleryTab === "Timeline" ? "text-sp-red border-b-2 border-sp-red" : "text-slate-400"
-                }`}
+                className={`pb-3 cursor-pointer transition-all ${galleryTab === "Timeline" ? "text-sp-red border-b-2 border-sp-red" : "text-slate-400"
+                  }`}
               >
                 {t("Timeline", "समयरेखा")}
               </button>
               <button
                 onClick={() => { setGalleryTab("Lighter"); setGalleryIndex(0); }}
-                className={`pb-3 cursor-pointer transition-all ${
-                  galleryTab === "Lighter" ? "text-sp-red border-b-2 border-sp-red" : "text-slate-400"
-                }`}
+                className={`pb-3 cursor-pointer transition-all ${galleryTab === "Lighter" ? "text-sp-red border-b-2 border-sp-red" : "text-slate-400"
+                  }`}
               >
                 {t("The Lighter Side", "अन्य गतिविधियां")}
               </button>
@@ -821,11 +819,10 @@ export default function Home() {
                   <div
                     key={idx}
                     onClick={() => setGalleryIndex(idx)}
-                    className={`border rounded-xl p-2 cursor-pointer flex items-center space-x-2 transition-all ${
-                      idx === galleryIndex
-                        ? "border-sp-red bg-sp-red/5"
-                        : "border-slate-200 dark:border-slate-800 hover:border-sp-red"
-                    }`}
+                    className={`border rounded-xl p-2 cursor-pointer flex items-center space-x-2 transition-all ${idx === galleryIndex
+                      ? "border-sp-red bg-sp-red/5"
+                      : "border-slate-200 dark:border-slate-800 hover:border-sp-red"
+                      }`}
                   >
                     <div className="relative w-12 h-10 rounded overflow-hidden shrink-0" style={{ position: "relative" }}>
                       <Image
@@ -849,13 +846,13 @@ export default function Home() {
         {/* 8. PRESS SECTION */}
         <section className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
           <div className="max-w-6xl mx-auto px-6">
-            
+
             <div className="bg-sp-red text-white text-xs font-bold tracking-widest uppercase px-6 py-2 rounded-r-full rounded-l-md w-max mb-10">
               {t("PRESS", "प्रेस")}
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              
+
               {/* Main clippings grid */}
               <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {mainPressItems.map((item) => (
@@ -891,7 +888,7 @@ export default function Home() {
                 <h4 className="text-xs uppercase font-extrabold tracking-widest text-slate-400 border-b border-slate-100 dark:border-slate-850 pb-2">
                   {t("Popular Press", "लोकप्रिय खबरें")}
                 </h4>
-                
+
                 <div className="space-y-4">
                   {popularPress.map((item, idx) => (
                     <div key={idx} className="border-b border-slate-100 dark:border-slate-900 pb-3 space-y-1">
@@ -913,7 +910,7 @@ export default function Home() {
         <section className="py-20 bg-white border-b border-slate-100 dark:border-slate-905">
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              
+
               {/* Upcoming Events */}
               <div className="lg:col-span-6 space-y-6">
                 <div className="bg-sp-red text-white text-xs font-bold tracking-widest uppercase px-6 py-2 rounded-r-full rounded-l-md w-max">
@@ -982,21 +979,21 @@ export default function Home() {
         {/* 10. FOLLOW (SOCIAL MEDIA CHANNELS + EMBEDDED FACEBOOK IFRAME) */}
         <section id="contact" className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
           <div className="max-w-6xl mx-auto px-6">
-            
+
             <div className="bg-sp-red text-white text-xs font-bold tracking-widest uppercase px-6 py-2 rounded-r-full rounded-l-md w-max mb-10">
               {t("FOLLOW", "सोशल मीडिया पर जुड़े")}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              
+
               {/* Embedded Real Facebook Feed Page Plugin */}
               <div className="border border-slate-200 dark:border-slate-800 rounded-3xl p-6 bg-white flex flex-col items-center justify-center min-h-[500px]">
                 <div className="w-full flex items-center justify-between border-b border-slate-150 dark:border-slate-850 pb-3 mb-4">
                   <span className="text-xs font-bold text-slate-800 dark:text-white">Facebook Feed</span>
-                  <a 
-                    href="https://www.facebook.com/MurliManoharJaiswal1216" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://www.facebook.com/MurliManoharJaiswal1216"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-[10px] font-bold text-sp-red uppercase hover:underline"
                   >
                     {t("View Page", "पेज देखें")}
@@ -1022,10 +1019,10 @@ export default function Home() {
                       <Instagram className="w-5 h-5 text-pink-500" />
                       <span className="text-xs font-bold text-slate-800 dark:text-white">murlimanoharjaiswal1216</span>
                     </div>
-                    <a 
-                      href="https://www.instagram.com/murlimanoharjaiswal1216" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <a
+                      href="https://www.instagram.com/murlimanoharjaiswal1216"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-[10px] font-bold text-sp-red uppercase hover:underline"
                     >
                       {t("Follow", "फॉलो करें")}
