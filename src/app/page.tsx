@@ -516,32 +516,32 @@ export default function Home() {
                   {impactCards.map((card) => (
                     <div
                       key={card.id}
-                      className="border border-slate-200 dark:border-slate-800 rounded-2xl p-5 hover:border-sp-red transition-all duration-300 cursor-pointer flex flex-col justify-between min-h-[180px] h-auto bg-white"
+                      className={`border rounded-2xl p-5 transition-all duration-300 cursor-pointer flex flex-col justify-between min-h-[180px] h-auto ${
+                        activeImpact === card.id
+                          ? "bg-sp-red text-white border-sp-red shadow-lg animate-pulse-slow"
+                          : "bg-white text-slate-800 border-slate-200 dark:border-slate-800 hover:border-sp-red"
+                      }`}
                       onClick={() => toggleImpact(card.id)}
                     >
                       <div className="space-y-2">
-                        <h4 className="font-serif font-bold text-sm text-sp-red">
+                        <h4 className={`font-serif font-bold text-sm ${
+                          activeImpact === card.id ? "text-white" : "text-sp-red"
+                        }`}>
                           {t(card.titleEn, card.titleHi)}
                         </h4>
-                        <p className="text-[10px] text-slate-500 leading-snug">
+                        <p className={`text-[10px] leading-snug ${
+                          activeImpact === card.id ? "text-slate-100" : "text-slate-500 dark:text-slate-400"
+                        }`}>
                           {t(card.descEn, card.descHi)}
                         </p>
-                        
-                        {/* Inline details animation */}
-                        <div className={`grid transition-all duration-300 ease-in-out ${
-                          activeImpact === card.id ? "grid-rows-[1fr] opacity-100 mt-2" : "grid-rows-[0fr] opacity-0 pointer-events-none"
-                        }`}>
-                          <div className="overflow-hidden">
-                            <p className="text-[11px] leading-relaxed text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-2">
-                              {t(card.detailsEn, card.detailsHi)}
-                            </p>
-                          </div>
-                        </div>
                       </div>
 
-                      <div className="flex justify-center pt-2 text-slate-400 hover:text-sp-red">
-                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${activeImpact === card.id ? "rotate-180 text-sp-red" : "rotate-0"
-                          }`} />
+                      <div className={`flex justify-center pt-2 ${
+                        activeImpact === card.id ? "text-white" : "text-slate-400 hover:text-sp-red"
+                      }`}>
+                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${
+                          activeImpact === card.id ? "rotate-180" : "rotate-0"
+                        }`} />
                       </div>
                     </div>
                   ))}
@@ -549,6 +549,27 @@ export default function Home() {
               </div>
 
             </div>
+
+            {/* Full Width Multi-Column Details Panel below both columns */}
+            {activeImpact !== null && (
+              <div className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800 animate-fadeIn">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-serif font-black text-sp-red uppercase tracking-wide">
+                    {t(impactCards[activeImpact - 1].titleEn, impactCards[activeImpact - 1].titleHi)}
+                  </h3>
+                  <button
+                    onClick={() => setActiveImpact(null)}
+                    className="p-1 rounded-full border border-slate-205 dark:border-slate-800 hover:bg-sp-red hover:text-white transition-colors cursor-pointer text-slate-400"
+                    aria-label="Close details"
+                  >
+                    <span className="text-xs font-bold block px-1.5 py-0.5">✕</span>
+                  </button>
+                </div>
+                <p className="columns-1 md:columns-3 gap-8 text-[11px] sm:text-xs leading-relaxed text-slate-600 dark:text-slate-400 text-justify">
+                  {t(impactCards[activeImpact - 1].detailsEn, impactCards[activeImpact - 1].detailsHi)}
+                </p>
+              </div>
+            )}
 
           </div>
         </section>
