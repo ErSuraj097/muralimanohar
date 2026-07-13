@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Sun, Moon, Menu, X } from "lucide-react";
+import { Sun, Moon, Menu, X, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar() {
@@ -58,9 +58,27 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
+  interface SubNavItem {
+    name: string;
+    href: string;
+  }
+
+  interface NavItem {
+    name: string;
+    href?: string;
+    subItems?: SubNavItem[];
+  }
+
+  const navItems: NavItem[] = [
     { name: t("Home", "होम"), href: "/" },
-    { name: t("About", "जीवनी"), href: "/about" },
+    { 
+      name: t("About", "जीवनी"), 
+      subItems: [
+        { name: t("Biography", "जीवनी"), href: "/about" },
+        { name: t("Profile Details", "प्रोफाइल विवरण"), href: "/person" },
+        { name: t("Family Legacy", "पारिवारिक पृष्ठभूमि"), href: "/family" },
+      ]
+    },
     { name: t("Timeline", "समयरेखा"), href: "/timeline" },
     { name: t("Press", "प्रेस"), href: "/press" },
     { name: t("My View", "विचार"), href: "/myview" },
@@ -89,15 +107,40 @@ export default function Navbar() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-6">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-xs sm:text-sm font-semibold text-slate-100 hover:text-white hover:underline transition-all duration-200"
-                >
-                  {item.name}
-                </a>
-              ))}
+              {navItems.map((item) => {
+                if (item.subItems) {
+                  return (
+                    <div key={item.name} className="relative group py-2">
+                      <button className="flex items-center gap-1 text-xs sm:text-sm font-semibold text-slate-100 hover:text-white transition-all duration-200 cursor-pointer">
+                        {item.name}
+                        <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" />
+                      </button>
+                      <div className="absolute left-0 mt-1 w-48 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div className="py-2">
+                          {item.subItems.map((sub) => (
+                            <a
+                              key={sub.href}
+                              href={sub.href}
+                              className="block px-4 py-2 text-xs sm:text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-sp-red transition-all duration-150"
+                            >
+                              {sub.name}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="text-xs sm:text-sm font-semibold text-slate-100 hover:text-white hover:underline transition-all duration-200"
+                  >
+                    {item.name}
+                  </a>
+                );
+              })}
               
               {/* Language Switcher */}
               <button
@@ -157,17 +200,40 @@ export default function Navbar() {
         {/* Mobile Navigation Drawer */}
         {isMobileMenuOpen && (
           <div className="md:hidden bg-sp-red border-t border-white/10 absolute top-full left-0 right-0 py-4 shadow-lg animate-fadeIn text-white">
-            <nav className="flex flex-col space-y-4 px-6">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-sm font-semibold hover:underline transition-colors duration-200 py-1"
-                >
-                  {item.name}
-                </a>
-              ))}
+            <nav className="flex flex-col space-y-4 px-6 max-h-[75vh] overflow-y-auto">
+              {navItems.map((item) => {
+                if (item.subItems) {
+                  return (
+                    <div key={item.name} className="flex flex-col space-y-2">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-white/60">
+                        {item.name}
+                      </span>
+                      <div className="pl-3 border-l border-white/20 flex flex-col space-y-2">
+                        {item.subItems.map((sub) => (
+                          <a
+                            key={sub.name}
+                            href={sub.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="text-sm font-semibold hover:underline transition-colors duration-200 py-1"
+                          >
+                            {sub.name}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                }
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-sm font-semibold hover:underline transition-colors duration-200 py-1"
+                  >
+                    {item.name}
+                  </a>
+                );
+              })}
             </nav>
           </div>
         )}

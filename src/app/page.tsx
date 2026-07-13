@@ -11,9 +11,8 @@ import {
   ChevronRight,
   Play,
   Calendar,
-  Twitter,
-  Instagram,
-  Heart
+  Heart,
+  Instagram
 } from "lucide-react";
 import Preloader from "@/components/Preloader";
 import Navbar from "@/components/Navbar";
@@ -22,6 +21,24 @@ import WavingRibbon from "@/components/WavingRibbon";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
+import Script from "next/script";
+
+<Script
+  src="https://platform.x.com/widgets.js"
+  strategy="lazyOnload"
+/>
+
+const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props} xmlns="http://www.w3.org/2000/svg">
+    <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7Zm9.5 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" />
+  </svg>
+);
+
+const TwitterIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props} xmlns="http://www.w3.org/2000/svg">
+    <path d="M22.46 6c-.77.35-1.6.59-2.47.7a4.3 4.3 0 0 0 1.88-2.38 8.6 8.6 0 0 1-2.72 1.04 4.28 4.28 0 0 0-7.3 3.9A12.15 12.15 0 0 1 3.15 4.9a4.28 4.28 0 0 0 1.33 5.72 4.22 4.22 0 0 1-1.94-.54v.05a4.28 4.28 0 0 0 3.43 4.2 4.3 4.3 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98A8.6 8.6 0 0 1 2 19.54 12.1 12.1 0 0 0 8.29 21c7.9 0 12.22-6.55 12.22-12.22 0-.19 0-.38-.01-.57A8.7 8.7 0 0 0 22.46 6Z" />
+  </svg>
+);
 
 // Hero Slides
 interface HeroSlide {
@@ -337,6 +354,14 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
+  // Auto-play stalwart quotes
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setStalwartIndex((prev) => (prev + 1) % stalwartQuotes.length);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
   // Scroll listener
   useEffect(() => {
     const handleScroll = () => {
@@ -447,7 +472,7 @@ export default function Home() {
         </section>
 
         {/* 2. IDEOLOGY SPEECH SLIDER (ABOVE IMPACT SECTION) */}
-        <section className="py-20 bg-white border-slate-200/50 dark:border-slate-800/50">
+        <section className="py-20 bg-white ">
           <div className="max-w-7xl mx-auto px-6 sm:px-12">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
 
@@ -495,7 +520,7 @@ export default function Home() {
         </section>
 
         {/* 3. INTERACTIVE IMPACT BLOCK (EXACT DUPLICATE OF FRAME 008.PNG) */}
-        <section className="py-24 bg-gray-50 border-b border-slate-100 dark:border-slate-900">
+        <section className="py-24 bg-gray-50 ">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {/* Header */}
@@ -594,7 +619,7 @@ export default function Home() {
         </section>
 
         {/* 4. JOURNEY (HORIZONTAL INTERACTIVE TIMELINE SECTION) */}
-        <section className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
+        <section className="py-20 bg-white ">
           <div className="max-w-6xl mx-auto px-6">
 
             {/* Control line */}
@@ -669,7 +694,7 @@ export default function Home() {
         </section>
 
         {/* 5. STALWART SAYS SECTION */}
-        <section className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
+        <section className="py-20 bg-gray-900">
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4 mb-8">
               <div className="bg-sp-red text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-6 py-2 rounded-r-full rounded-l-md">
@@ -680,17 +705,17 @@ export default function Home() {
                 <div className="flex space-x-2">
                   <button
                     onClick={() => setStalwartIndex((prev) => (prev === 0 ? stalwartQuotes.length - 1 : prev - 1))}
-                    className="p-1 border border-slate-200 dark:border-slate-800 rounded-full hover:text-sp-red hover:border-sp-red cursor-pointer transition-colors"
+                    className="p-1 border border-sp-red dark:border-sp-red rounded-full hover:text-sp-red hover:border-sp-red cursor-pointer transition-colors"
                     aria-label="Previous stalwart quote"
                   >
-                    <ChevronLeft className="w-3.5 h-3.5" />
+                    <ChevronLeft className="w-3.5 h-3.5 text-sp-red" />
                   </button>
                   <button
                     onClick={() => setStalwartIndex((prev) => (prev + 1) % stalwartQuotes.length)}
-                    className="p-1 border border-slate-200 dark:border-slate-800 rounded-full hover:text-sp-red hover:border-sp-red cursor-pointer transition-colors"
+                    className="p-1 border border-sp-red dark:border-sp-red rounded-full hover:text-sp-red hover:border-sp-red cursor-pointer transition-colors"
                     aria-label="Next stalwart quote"
                   >
-                    <ChevronRight className="w-3.5 h-3.5" />
+                    <ChevronRight className="w-3.5 h-3.5 text-sp-red" />
                   </button>
                 </div>
               </div>
@@ -702,34 +727,43 @@ export default function Home() {
                 stalwartQuotes[(stalwartIndex + 1) % stalwartQuotes.length],
                 stalwartQuotes[(stalwartIndex + 2) % stalwartQuotes.length]
               ].map((sq, idx) => (
-                <div key={idx} className="border border-slate-200 dark:border-slate-800 rounded-3xl p-6 flex items-center space-x-4 bg-white shadow-sm transition-all duration-300 animate-fadeIn">
-                  <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-sp-red" style={{ position: "relative" }}>
-                    <Image
-                      src={sq.image}
-                      alt={sq.nameEn}
-                      fill
-                      className="object-cover object-top"
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-[11px] text-slate-600 dark:text-slate-400 italic line-clamp-3">
-                      "{t(sq.quoteEn, sq.quoteHi)}"
-                    </p>
-                    <h4 className="text-xs font-bold text-sp-red pt-1">
-                      {t(sq.nameEn, sq.nameHi)}
-                    </h4>
-                    <p className="text-[9px] text-slate-400">
-                      {t(sq.titleEn, sq.titleHi)}
-                    </p>
-                  </div>
-                </div>
+      <div
+  key={idx}
+  className="group dark:border-slate-800 rounded-l-full flex items-center space-x-4 bg-white hover:bg-sp-red/50 shadow-sm transition-all duration-300 animate-fadeIn"
+>
+  <div
+    className="relative w-32 h-32 group-hover:w-24 group-hover:h-24 group-hover:ml-4 rounded-full overflow-hidden shrink-0 border-2 border-transparent group-hover:border-sp-red transition-all duration-300"
+    style={{ position: "relative" }}
+  >
+    <Image
+      src={sq.image}
+      alt={sq.nameEn}
+      fill
+      className="object-cover rounded-full transition-transform duration-300 group-hover:scale-110"
+    />
+  </div>
+
+  <div className="space-y-1 flex-1 pr-4">
+    <p className="text-sm text-black dark:text-black italic font-serif leading-snug line-clamp-3 group-hover:text-white transition-colors">
+      "{t(sq.quoteEn, sq.quoteHi)}"
+    </p>
+
+    <h4 className="text-xs font-bold text-sp-red pt-1">
+      {t(sq.nameEn, sq.nameHi)}
+    </h4>
+
+    <p className="text-[10px] text-slate-400">
+      {t(sq.titleEn, sq.titleHi)}
+    </p>
+  </div>
+</div>
               ))}
             </div>
           </div>
         </section>
 
         {/* 6. VIDEO GALLERY & DONATE SECTION */}
-        <section id="video-gallery" className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
+        <section id="video-gallery" className="py-20 bg-white ">
           <div className="max-w-6xl mx-auto px-6">
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -849,7 +883,7 @@ export default function Home() {
         </section>
 
         {/* 7. IMAGE GALLERY SECTION */}
-        <section className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
+        <section className="py-20 bg-gray-50 ">
           <div className="max-w-6xl mx-auto px-6">
 
             <div className="bg-sp-red text-white text-xs font-bold tracking-widest uppercase px-6 py-2 rounded-r-full rounded-l-md w-max mb-6">
@@ -941,7 +975,7 @@ export default function Home() {
         </section>
 
         {/* 8. PRESS SECTION */}
-        <section className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
+        <section className="py-20 bg-white ">
           <div className="max-w-6xl mx-auto px-6">
 
             <div className="bg-sp-red text-white text-xs font-bold tracking-widest uppercase px-6 py-2 rounded-r-full rounded-l-md w-max mb-10">
@@ -1004,7 +1038,7 @@ export default function Home() {
         </section>
 
         {/* 9. EVENTS & WATCH LIVE SECTION */}
-        <section className="py-20 bg-white border-b border-slate-100 dark:border-slate-905">
+        <section className="py-20 bg-gray-50 ">
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
@@ -1074,7 +1108,7 @@ export default function Home() {
         </section>
 
         {/* 10. FOLLOW (SOCIAL MEDIA CHANNELS + EMBEDDED FACEBOOK IFRAME) */}
-        <section id="contact" className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
+        <section id="contact" className="py-20 bg-white ">
           <div className="max-w-6xl mx-auto px-6">
 
             <div className="bg-sp-red text-white text-xs font-bold tracking-widest uppercase px-6 py-2 rounded-r-full rounded-l-md w-max mb-10">
@@ -1084,7 +1118,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
               {/* Embedded Real Facebook Feed Page Plugin */}
-              <div className="border border-slate-200 dark:border-slate-800 rounded-3xl p-6 bg-white flex flex-col items-center justify-center min-h-[500px]">
+              <div className=" bg-white flex flex-col items-center justify-center min-h-[500px]">
                 <div className="w-full flex items-center justify-between border-b border-slate-150 dark:border-slate-850 pb-3 mb-4">
                   <span className="text-xs font-bold text-slate-800 dark:text-white">Facebook Feed</span>
                   <a
@@ -1108,50 +1142,46 @@ export default function Home() {
                 ></iframe>
               </div>
 
-              {/* Mock Instagram Feed */}
-              <div className="border border-slate-200 dark:border-slate-800 rounded-3xl p-6 bg-white space-y-4 flex flex-col justify-between min-h-[500px]">
-                <div className="w-full">
-                  <div className="flex items-center justify-between border-b border-slate-150 dark:border-slate-850 pb-3 mb-4">
-                    <div className="flex items-center space-x-2">
-                      <Instagram className="w-5 h-5 text-pink-500" />
-                      <span className="text-xs font-bold text-slate-800 dark:text-white">murlimanoharjaiswal1216</span>
-                    </div>
-                    <a
-                      href="https://www.instagram.com/murlimanoharjaiswal1216"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[10px] font-bold text-sp-red uppercase hover:underline"
-                    >
-                      {t("Follow", "फॉलो करें")}
-                    </a>
-                  </div>
+              {/* Instagram Feed */}
+            <div className="border border-slate-200 dark:border-slate-800 rounded-3xl p-6 bg-white flex flex-col min-h-[500px]">
+  <div className="flex items-center justify-between border-b pb-3 mb-4">
+    <div className="flex items-center gap-3">
+      <Image
+        src="/images/hero-2.png" // Your profile photo
+        alt="Murli Manohar Jaiswal"
+        width={50}
+        height={50}
+        className="rounded-full"
+      />
 
-                  <div className="grid grid-cols-3 gap-2">
-                    <div className="relative aspect-square rounded-xl overflow-hidden bg-slate-200" style={{ position: "relative" }}>
-                      <Image src="/images/image-copy-3.png" alt="Insta post" fill className="object-cover" />
-                    </div>
-                    <div className="relative aspect-square rounded-xl overflow-hidden bg-slate-200" style={{ position: "relative" }}>
-                      <Image src="/images/image-copy-4.png" alt="Insta post" fill className="object-cover" />
-                    </div>
-                    <div className="relative aspect-square rounded-xl overflow-hidden bg-slate-200" style={{ position: "relative" }}>
-                      <Image src="/images/image-copy-2.png" alt="Insta post" fill className="object-cover" />
-                    </div>
-                  </div>
-                </div>
+      <div>
+        <h3 className="font-semibold text-black text-sm">
+          Murli Manohar Jaiswal
+        </h3>
+        <p className="text-xs text-slate-500">
+          @murlimanoharjaiswal1216
+        </p>
+      </div>
+    </div>
 
-                <div className="border border-slate-200 dark:border-slate-800 rounded-2xl p-4 bg-white dark:bg-slate-950 space-y-2 mt-4">
-                  <div className="flex items-center space-x-2">
-                    <Twitter className="w-4 h-4 text-sky-500 fill-current" />
-                    <span className="text-[10px] font-bold text-slate-500">@MMJAISWAL1216</span>
-                  </div>
-                  <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
-                    {t(
-                      "Working together to build infrastructure improvements and sports drives in Barhaj block Deoria.",
-                      "बरहज ब्लॉक देवरिया में बुनियादी ढांचे में सुधार और खेल गतिविधियों को बढ़ावा देने के लिए मिलकर काम कर रहे हैं।"
-                    )}
-                  </p>
-                </div>
-              </div>
+    <a
+      href="https://www.instagram.com/murlimanoharjaiswal1216/?hl=en"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-[10px] font-bold text-sp-red uppercase hover:underline"
+    >
+      Follow
+    </a>
+  </div>
+</div>
+
+
+
+
+<blockquote className="twitter-tweet">
+  <a href="https://x.com/MMJAISWAL1216/status/1617581813857419264"></a>
+</blockquote>
+
 
             </div>
 

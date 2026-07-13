@@ -40,6 +40,8 @@ export default function Footer() {
             <ul className="space-y-2 text-xs">
               <li><a href="/" className="hover:text-white transition-colors">Home</a></li>
               <li><a href="/about" className="hover:text-white transition-colors">About</a></li>
+              <li><a href="/person" className="hover:text-white transition-colors">Profile Details</a></li>
+              <li><a href="/family" className="hover:text-white transition-colors">Family Legacy</a></li>
               <li><a href="/timeline" className="hover:text-white transition-colors">Timeline</a></li>
               <li><a href="/gallery" className="hover:text-white transition-colors">Gallery</a></li>
             </ul>

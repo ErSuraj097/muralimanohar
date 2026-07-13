@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, ArrowRight, Sparkles } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
@@ -13,19 +13,32 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-grow pt-24 bg-white dark:bg-slate-950">
+      <main className="flex-grow pt-18 bg-white dark:bg-slate-950">
         
         {/* Banner */}
-        <section className="relative py-16 bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-2">
-            <span className="text-xs uppercase font-extrabold tracking-widest text-sp-red">
+        <section className="relative py-32 overflow-hidden bg-slate-950 text-white border-b border-slate-800">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/hero.png"
+              alt="About page background hero"
+              fill
+              className=" opacity-30"
+              priority
+            />
+            {/* <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent" /> */}
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left space-y-2">
+            <span className="text-xs uppercase font-extrabold tracking-widest text-sp-red flex items-center justify-start gap-2">
+              <Sparkles className="w-4 h-4" />
               {t("Biography", "जीवनी")}
             </span>
-            <h1 className="text-4xl sm:text-5xl font-serif font-bold text-slate-900 dark:text-white">
+            <h1 className="text-4xl sm:text-5xl font-serif font-bold text-white">
               {t("About Murli Manohar Jaiswal", "मुरली मनोहर जायसवाल के बारे में")}
             </h1>
-            <div className="h-1 w-20 bg-sp-red mx-auto rounded-full" />
-            <p className="text-sm text-slate-500 max-w-xl mx-auto">
+            <div className="h-1 w-20 bg-sp-red rounded-full" />
+            <p className="text-sm text-slate-300 max-w-xl leading-relaxed">
               {t(
                 "A profile of political dedication, public welfare activities, and local representation.",
                 "राजनीतिक समर्पण, जन कल्याणकारी गतिविधियों और क्षेत्रीय प्रतिनिधित्व की एक रूपरेखा।"
@@ -62,6 +75,15 @@ export default function AboutPage() {
                       "दादा श्री गोरख प्रसाद जायसवाल (पूर्व सांसद) और पिता स्वर्गीय श्री राम प्रसाद जायसवाल (पूर्व विधायक, बरहज विधानसभा) के जनसेवा के आदर्शों से प्रेरित।"
                     )}
                   </p>
+                  <div className="mt-4">
+                    <a
+                      href="/family"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-sp-red hover:underline"
+                    >
+                      {t("View Family Details", "पारिवारिक विवरण देखें")}
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -88,6 +110,16 @@ export default function AboutPage() {
                     "सक्रिय राजनीति में आने से पहले, मुरली मनोहर व्यवसाय और सामाजिक कार्यों में शामिल थे। दोनों क्षेत्रों में उनके अनुभवों ने उन्हें उत्तर प्रदेश में उद्यमियों, युवाओं, किसानों, व्यापारियों और आम नागरिकों के सामने आने वाली व्यावहारिक चुनौतियों को समझने में मदद की है।"
                   )}
                 </p>
+
+                <div className="pt-2 pb-4">
+                  <a
+                    href="/person"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-sp-red hover:bg-sp-red-hover text-white text-xs font-bold uppercase rounded-lg shadow-sm transition-all duration-200"
+                  >
+                    {t("View Full Profile Details", "पूर्ण व्यक्तिगत विवरण देखें")}
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
 
                 {/* Core Philosophy list */}
                 <div className="pt-6 border-t border-slate-100 dark:border-slate-800">

@@ -25,12 +25,14 @@ export default function Preloader() {
           }}
         >
           <div className="relative flex flex-col items-center max-w-md px-6 text-center">
-            {/* Elegant Spinning Border */}
-            <motion.div
-              className="w-24 h-24 rounded-full border-2 border-sp-red border-t-flag-saffron border-r-transparent border-b-flag-green"
-              animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-            />
+            <div className="relative w-24 h-24 flex items-center justify-center">
+              <motion.div
+                className="absolute inset-0 rounded-full border-2 border-sp-red border-t-flag-saffron border-r-transparent border-b-flag-green"
+                animate={{ rotate: 360 }}
+                transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+              />
+              <img src="/images/profile.png" alt="Murli Manohar Jaiswal" className="w-[86px] h-[86px] rounded-full object-cover relative z-10" />
+            </div>
 
             {/* Title / Name */}
             <motion.h1
