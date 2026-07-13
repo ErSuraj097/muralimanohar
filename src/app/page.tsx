@@ -55,7 +55,7 @@ const heroSlides: HeroSlide[] = [
     titleHi: "“कला एवं संस्कृति प्रेमी”",
     subEn: "Supporting local artisans, folk festivals, and sports drives.",
     subHi: "स्थानीय शिल्पकारों, लोक उत्सवों और खेल अभियानों को निरंतर प्रोत्साहन।",
-    image: "/images/hero,png",
+    image: "/images/hero.png",
     textPosition: "right",
   },
   {
