@@ -153,6 +153,24 @@ const stalwartQuotes: StalwartQuote[] = [
     quoteHi: "उनकी संगठनात्मक क्षमता और देवरिया के ग्रामीण परिवारों के साथ उनका सीधा जमीनी जुड़ाव अत्यंत सराहनीय है।",
     image: "/images/image-copy-2.png",
   },
+  {
+    nameEn: "Prof. Ram Gopal Yadav",
+    nameHi: "प्रो. राम गोपाल यादव",
+    titleEn: "Member of Parliament, Rajya Sabha",
+    titleHi: "सांसद, राज्यसभा",
+    quoteEn: "His organizational capabilities and direct connection with the grassroots rural families in Deoria are exemplary.",
+    quoteHi: "उनकी संगठनात्मक क्षमता और देवरिया के ग्रामीण परिवारों के साथ उनका सीधा जमीनी जुड़ाव अत्यंत सराहनीय है।",
+    image: "/images/image-copy-2.png",
+  },
+  {
+    nameEn: "Prof. Ram Gopal Yadav",
+    nameHi: "प्रो. राम गोपाल यादव",
+    titleEn: "Member of Parliament, Rajya Sabha",
+    titleHi: "सांसद, राज्यसभा",
+    quoteEn: "His organizational capabilities and direct connection with the grassroots rural families in Deoria are exemplary.",
+    quoteHi: "उनकी संगठनात्मक क्षमता और देवरिया के ग्रामीण परिवारों के साथ उनका सीधा जमीनी जुड़ाव अत्यंत सराहनीय है।",
+    image: "/images/image-copy-2.png",
+  },
 ];
 
 // Mock Video Playlist
@@ -481,9 +499,9 @@ export default function Home() {
 
             {/* Header */}
             <div className="text-left mb-16 space-y-4">
-              {/* <span className="text-xs uppercase font-extrabold tracking-widest text-sp-red">
+              <span className="text-xs uppercase font-extrabold tracking-widest text-sp-red">
                 {t("Metrics of Governance", "विकास और नेतृत्व के आयाम")}
-              </span> */}
+              </span>
               <h2 className="text-3xl sm:text-4xl font-serif font-bold text-sp-red dark:text-sp-red">
                 {t("IMPACT", "प्रभाव व उपलब्धियां")}
               </h2>
@@ -724,29 +742,47 @@ export default function Home() {
                   </div>
 
                   {/* Thumbnail playlist */}
-                  <div className="md:col-span-3 flex flex-col space-y-3 justify-between">
-                    {playlistVideos.map((vid, idx) => (
-                      <div
-                        key={vid.id}
-                        onClick={() => setActiveVideo(idx)}
-                        className={`border rounded-xl p-2 cursor-pointer flex items-center space-x-2 transition-all ${idx === activeVideo
-                          ? "border-sp-red bg-sp-red/5"
-                          : "border-slate-200 dark:border-slate-800 hover:border-sp-red"
-                          }`}
-                      >
-                        <div className="relative w-12 h-10 rounded overflow-hidden shrink-0" style={{ position: "relative" }}>
-                          <Image
-                            src={vid.image}
-                            alt="thumb"
-                            fill
-                            className="object-cover"
-                          />
+                  <div className="md:col-span-3 flex flex-col items-center justify-between h-full">
+                    <button
+                      onClick={() => setActiveVideo(activeVideo === 0 ? playlistVideos.length - 1 : activeVideo - 1)}
+                      className="p-1 rounded-full border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 cursor-pointer text-slate-500 hover:text-sp-red transition-colors"
+                      aria-label="Previous video"
+                    >
+                      <ChevronUp className="w-4 h-4" />
+                    </button>
+                    
+                    <div className="flex flex-col space-y-3 w-full my-2">
+                      {playlistVideos.map((vid, idx) => (
+                        <div
+                          key={vid.id}
+                          onClick={() => setActiveVideo(idx)}
+                          className={`border rounded-xl p-2 cursor-pointer flex items-center space-x-2 transition-all ${idx === activeVideo
+                            ? "border-sp-red bg-sp-red/5"
+                            : "border-slate-200 dark:border-slate-800 hover:border-sp-red"
+                            }`}
+                        >
+                          <div className="relative w-12 h-10 rounded overflow-hidden shrink-0" style={{ position: "relative" }}>
+                            <Image
+                              src={vid.image}
+                              alt="thumb"
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <p className="text-[9px] font-bold text-slate-700 dark:text-slate-300 line-clamp-2 leading-tight">
+                            {t(vid.titleEn, vid.titleHi)}
+                          </p>
                         </div>
-                        <p className="text-[9px] font-bold text-slate-700 dark:text-slate-300 line-clamp-2 leading-tight">
-                          {t(vid.titleEn, vid.titleHi)}
-                        </p>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={() => setActiveVideo((activeVideo + 1) % playlistVideos.length)}
+                      className="p-1 rounded-full border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 cursor-pointer text-slate-500 hover:text-sp-red transition-colors"
+                      aria-label="Next video"
+                    >
+                      <ChevronDown className="w-4 h-4" />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -833,29 +869,47 @@ export default function Home() {
               </div>
 
               {/* Side playlist selection */}
-              <div className="md:col-span-3 flex flex-col space-y-3 justify-between">
-                {(galleryTab === "Timeline" ? journeyEvents : heroSlides).slice(0, 3).map((item, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => setGalleryIndex(idx)}
-                    className={`border rounded-xl p-2 cursor-pointer flex items-center space-x-2 transition-all ${idx === galleryIndex
-                      ? "border-sp-red bg-sp-red/5"
-                      : "border-slate-200 dark:border-slate-800 hover:border-sp-red"
-                      }`}
-                  >
-                    <div className="relative w-12 h-10 rounded overflow-hidden shrink-0" style={{ position: "relative" }}>
-                      <Image
-                        src={item.image}
-                        alt="thumb"
-                        fill
-                        className="object-cover"
-                      />
+              <div className="md:col-span-3 flex flex-col items-center justify-between h-full">
+                <button
+                  onClick={() => setGalleryIndex(galleryIndex === 0 ? 2 : galleryIndex - 1)}
+                  className="p-1 rounded-full border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 cursor-pointer text-slate-500 hover:text-sp-red transition-colors"
+                  aria-label="Previous image"
+                >
+                  <ChevronUp className="w-4 h-4" />
+                </button>
+                
+                <div className="flex flex-col space-y-3 w-full my-2">
+                  {(galleryTab === "Timeline" ? journeyEvents : heroSlides).slice(0, 3).map((item, idx) => (
+                    <div
+                      key={idx}
+                      onClick={() => setGalleryIndex(idx)}
+                      className={`border rounded-xl p-2 cursor-pointer flex items-center space-x-2 transition-all ${idx === galleryIndex
+                        ? "border-sp-red bg-sp-red/5"
+                        : "border-slate-200 dark:border-slate-800 hover:border-sp-red"
+                        }`}
+                    >
+                      <div className="relative w-12 h-10 rounded overflow-hidden shrink-0" style={{ position: "relative" }}>
+                        <Image
+                          src={item.image}
+                          alt="thumb"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <p className="text-[10px] font-bold text-slate-700 dark:text-slate-300 line-clamp-2">
+                        {t(item.titleEn, item.titleHi)}
+                      </p>
                     </div>
-                    <p className="text-[10px] font-bold text-slate-700 dark:text-slate-300 line-clamp-2">
-                      {t(item.titleEn, item.titleHi)}
-                    </p>
-                  </div>
-                ))}
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => setGalleryIndex((galleryIndex + 1) % 3)}
+                  className="p-1 rounded-full border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 cursor-pointer text-slate-500 hover:text-sp-red transition-colors"
+                  aria-label="Next image"
+                >
+                  <ChevronDown className="w-4 h-4" />
+                </button>
               </div>
             </div>
 
