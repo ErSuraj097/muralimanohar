@@ -39,7 +39,7 @@ const heroSlides: HeroSlide[] = [
     titleHi: "“इतिहास के अध्येता”",
     subEn: "Dedicated to the regional heritage, education, and rural prosperity.",
     subHi: "भारत की क्षेत्रीय विरासत, शिक्षा और ग्रामीण समृद्धि के लिए समर्पित।",
-    image: "/images/hero-1.png",
+    image: "/images/hero-2.png",
     textPosition: "right",
   },
   {
@@ -47,24 +47,17 @@ const heroSlides: HeroSlide[] = [
     titleHi: "“युवाओं के मार्गदर्शक”",
     subEn: "Creating job skills, sports programs, and technical education hubs.",
     subHi: "कौशल विकास, खेलकूद और तकनीकी शिक्षा के नए अवसरों का सृजन।",
-    image: "/images/hero-2.png",
+    image: "/images/hero.png",
     textPosition: "left",
   },
+ 
   {
     titleEn: "“ART & CULTURE LOVER”",
     titleHi: "“कला एवं संस्कृति प्रेमी”",
     subEn: "Supporting local artisans, folk festivals, and sports drives.",
     subHi: "स्थानीय शिल्पकारों, लोक उत्सवों और खेल अभियानों को निरंतर प्रोत्साहन।",
-    image: "/images/hero.png",
-    textPosition: "right",
-  },
-  {
-    titleEn: "“ART & CULTURE LOVER”",
-    titleHi: "“कला एवं संस्कृति प्रेमी”",
-    subEn: "Supporting local artisans, folk festivals, and sports drives.",
-    subHi: "स्थानीय शिल्पकारों, लोक उत्सवों और खेल अभियानों को निरंतर प्रोत्साहन।",
-    image: "/images/hero.png",
-    textPosition: "right",
+    image: "/images/hero-1.png",
+    textPosition: "left",
   },
 ];
 
@@ -348,7 +341,7 @@ export default function Home() {
       <Navbar />
 
       {/* Left side floating theme controls */}
-      <div className="fixed left-4 top-1/2 -translate-y-1/2 z-30 flex flex-col items-center bg-slate-950/90 border border-slate-800/80 backdrop-blur rounded-full py-4 px-2 space-y-4 shadow-lg text-white select-none">
+      <div className="fixed left-1 top-1/2 -translate-y-1/2 z-30 flex flex-col items-center bg-slate-950/90 border border-slate-800/80 backdrop-blur rounded-full py-4 px-2 space-y-4 shadow-lg text-white select-none">
         <button
           className="w-5 h-5 rounded-full bg-white border border-slate-300 cursor-pointer"
           title="Light Theme"
@@ -402,7 +395,7 @@ export default function Home() {
             </div>
           ))}
 
-          <div className={`max-w-7xl mx-auto px-6 sm:px-12 md:px-20 relative z-10 w-full mb-8 sm:mb-12 flex flex-col ${heroSlides[currentSlide].textPosition === "right" ? "items-end text-right ml-auto" : "items-start text-left mr-auto"
+          <div className={`max-w-8xl mx-auto px-6 sm:px-12 md:px-20 relative z-10 w-full mb-8 sm:mb-12 flex flex-col ${heroSlides[currentSlide].textPosition === "right" ? "items-end text-right ml-auto" : "items-start text-left mr-auto"
             }`}>
             <div className="max-w-2xl space-y-4">
               <span className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sp-red text-white text-[10px] font-bold uppercase tracking-widest ${heroSlides[currentSlide].textPosition === "right" ? "self-end" : "self-start"
@@ -435,8 +428,8 @@ export default function Home() {
         </section>
 
         {/* 2. IDEOLOGY SPEECH SLIDER (ABOVE IMPACT SECTION) */}
-        <section className="py-20 bg-white border-b border-slate-200/50 dark:border-slate-800/50">
-          <div className="max-w-6xl mx-auto px-6 sm:px-12">
+        <section className="py-20 bg-white border-slate-200/50 dark:border-slate-800/50">
+          <div className="max-w-7xl mx-auto px-6 sm:px-12">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
 
               {/* Video Frame Left */}
@@ -483,18 +476,18 @@ export default function Home() {
         </section>
 
         {/* 3. INTERACTIVE IMPACT BLOCK (EXACT DUPLICATE OF FRAME 008.PNG) */}
-        <section className="py-24 bg-white border-b border-slate-100 dark:border-slate-900">
+        <section className="py-24 bg-gray-50 border-b border-slate-100 dark:border-slate-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {/* Header */}
-            <div className="text-center mb-16 space-y-4">
-              <span className="text-xs uppercase font-extrabold tracking-widest text-sp-red">
+            <div className="text-left mb-16 space-y-4">
+              {/* <span className="text-xs uppercase font-extrabold tracking-widest text-sp-red">
                 {t("Metrics of Governance", "विकास और नेतृत्व के आयाम")}
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-900 dark:text-white">
+              </span> */}
+              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-sp-red dark:text-sp-red">
                 {t("IMPACT", "प्रभाव व उपलब्धियां")}
               </h2>
-              <div className="h-1 w-16 bg-sp-red mx-auto rounded-full" />
+              <div className="h-1 w-16 bg-sp-red  rounded-full" />
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -523,16 +516,27 @@ export default function Home() {
                   {impactCards.map((card) => (
                     <div
                       key={card.id}
-                      className="border border-slate-200 dark:border-slate-800 rounded-2xl p-5 hover:border-sp-red transition-colors cursor-pointer flex flex-col justify-between h-[180px] bg-white"
+                      className="border border-slate-200 dark:border-slate-800 rounded-2xl p-5 hover:border-sp-red transition-all duration-300 cursor-pointer flex flex-col justify-between min-h-[180px] h-auto bg-white"
                       onClick={() => toggleImpact(card.id)}
                     >
-                      <div>
-                        <h4 className="font-serif font-bold text-sm text-sp-red mb-1">
+                      <div className="space-y-2">
+                        <h4 className="font-serif font-bold text-sm text-sp-red">
                           {t(card.titleEn, card.titleHi)}
                         </h4>
-                        <p className="text-[10px] text-slate-500 leading-snug line-clamp-3">
+                        <p className="text-[10px] text-slate-500 leading-snug">
                           {t(card.descEn, card.descHi)}
                         </p>
+                        
+                        {/* Inline details animation */}
+                        <div className={`grid transition-all duration-300 ease-in-out ${
+                          activeImpact === card.id ? "grid-rows-[1fr] opacity-100 mt-2" : "grid-rows-[0fr] opacity-0 pointer-events-none"
+                        }`}>
+                          <div className="overflow-hidden">
+                            <p className="text-[11px] leading-relaxed text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-2">
+                              {t(card.detailsEn, card.detailsHi)}
+                            </p>
+                          </div>
+                        </div>
                       </div>
 
                       <div className="flex justify-center pt-2 text-slate-400 hover:text-sp-red">
@@ -542,18 +546,6 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-
-                {/* Expanded Details Panel */}
-                {activeImpact !== null && (
-                  <div className="mt-8 p-6 bg-white border border-sp-red/20 rounded-2xl animate-fadeIn">
-                    <h4 className="font-serif font-bold text-base text-sp-red mb-2">
-                      {t(impactCards[activeImpact - 1].titleEn, impactCards[activeImpact - 1].titleHi)}
-                    </h4>
-                    <p className="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-                      {t(impactCards[activeImpact - 1].detailsEn, impactCards[activeImpact - 1].detailsHi)}
-                    </p>
-                  </div>
-                )}
               </div>
 
             </div>
