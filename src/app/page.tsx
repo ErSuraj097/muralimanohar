@@ -30,29 +30,33 @@ interface HeroSlide {
   subEn: string;
   subHi: string;
   image: string;
+  textPosition: "left" | "right";
 }
 
 const heroSlides: HeroSlide[] = [
   {
-    titleEn: "“KEEN STUDENT OF HISTORY AND CULTURE”",
-    titleHi: "“इतिहास और संस्कृति के गहन अध्येता”",
-    subEn: "Dedicated to the regional heritage, education, and rural prosperity of India.",
+    titleEn: "“STUDENT OF HISTORY”",
+    titleHi: "“इतिहास के अध्येता”",
+    subEn: "Dedicated to the regional heritage, education, and rural prosperity.",
     subHi: "भारत की क्षेत्रीय विरासत, शिक्षा और ग्रामीण समृद्धि के लिए समर्पित।",
     image: "/images/image-copy-3.png",
+    textPosition: "right",
   },
   {
-    titleEn: "“A LEADER OF THE YOUTH”",
+    titleEn: "“LEADER OF YOUTH”",
     titleHi: "“युवाओं के मार्गदर्शक”",
     subEn: "Creating job skills, sports programs, and technical education hubs.",
     subHi: "कौशल विकास, खेलकूद और तकनीकी शिक्षा के नए अवसरों का सृजन।",
     image: "/images/image-copy-4.png",
+    textPosition: "left",
   },
   {
-    titleEn: "“LOVER OF INDIAN ART & CULTURE”",
-    titleHi: "“भारतीय कला एवं संस्कृति के प्रेमी”",
+    titleEn: "“ART & CULTURE LOVER”",
+    titleHi: "“कला एवं संस्कृति प्रेमी”",
     subEn: "Supporting local artisans, folk festivals, and sports drives.",
     subHi: "स्थानीय शिल्पकारों, लोक उत्सवों और खेल अभियानों को निरंतर प्रोत्साहन।",
     image: "/images/image-copy-2.png",
+    textPosition: "right",
   },
 ];
 
@@ -385,35 +389,24 @@ export default function Home() {
             </div>
           ))}
           
-          <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-20 relative z-10 w-full mb-8 sm:mb-12">
-            <div className="max-w-3xl text-left space-y-4">
-              <span className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sp-red text-white text-[10px] font-bold uppercase tracking-widest">
+          <div className={`max-w-7xl mx-auto px-6 sm:px-12 md:px-20 relative z-10 w-full mb-8 sm:mb-12 flex flex-col ${
+            heroSlides[currentSlide].textPosition === "right" ? "items-end text-right ml-auto" : "items-start text-left mr-auto"
+          }`}>
+            <div className="max-w-2xl space-y-4">
+              <span className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sp-red text-white text-[10px] font-bold uppercase tracking-widest ${
+                heroSlides[currentSlide].textPosition === "right" ? "self-end" : "self-start"
+              }`}>
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>{t("SAMAJWADI PARTY LEADER", "समाजवादी पार्टी नेता")}</span>
               </span>
               
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-wider leading-none text-flag-saffron transition-all duration-700 uppercase filter drop-shadow-md">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-black tracking-wider leading-none text-flag-saffron transition-all duration-700 uppercase filter drop-shadow-md">
                 {t(heroSlides[currentSlide].titleEn, heroSlides[currentSlide].titleHi)}
               </h1>
               
-              <p className="text-slate-300 text-xs sm:text-sm font-medium font-sans tracking-widest max-w-xl">
+              <p className="text-slate-300 text-xs sm:text-sm font-medium font-sans tracking-widest">
                 {t(heroSlides[currentSlide].subEn, heroSlides[currentSlide].subHi)}
               </p>
-              
-              <div className="flex flex-wrap items-center gap-4 pt-4">
-                <a
-                  href="/about"
-                  className="px-8 py-3 rounded-full bg-sp-red hover:bg-sp-red-hover text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md"
-                >
-                  {t("Know More", "अधिक जानें")}
-                </a>
-                <a
-                  href="/contact"
-                  className="px-8 py-3 rounded-full glass-card text-white hover:bg-sp-red hover:text-white font-bold text-xs uppercase tracking-wider transition-all duration-300"
-                >
-                  {t("Contact", "संपर्क करें")}
-                </a>
-              </div>
             </div>
           </div>
           

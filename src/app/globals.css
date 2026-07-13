@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-poppins), system-ui, sans-serif;
-  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: Cambria, "Times New Roman", Times, serif;
+  --font-serif: Cambria, "Times New Roman", Times, serif;
   
   --color-sp-red: #E31E24;
   --color-sp-red-hover: #C21419;
