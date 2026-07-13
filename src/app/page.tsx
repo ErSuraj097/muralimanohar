@@ -432,7 +432,7 @@ export default function Home() {
         </section>
 
         {/* 2. IDEOLOGY SPEECH SLIDER (ABOVE IMPACT SECTION) */}
-        <section className="py-20 bg-slate-50 dark:bg-slate-900/10 border-b border-slate-200/50 dark:border-slate-800/50">
+        <section className="py-20 bg-white border-b border-slate-200/50 dark:border-slate-800/50">
           <div className="max-w-6xl mx-auto px-6 sm:px-12">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
               
@@ -480,7 +480,7 @@ export default function Home() {
         </section>
 
         {/* 3. INTERACTIVE IMPACT BLOCK (EXACT DUPLICATE OF FRAME 008.PNG) */}
-        <section className="py-24 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-900">
+        <section className="py-24 bg-white border-b border-slate-100 dark:border-slate-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {/* Header */}
@@ -520,7 +520,7 @@ export default function Home() {
                   {impactCards.map((card) => (
                     <div 
                       key={card.id}
-                      className="border border-slate-200 dark:border-slate-800 rounded-2xl p-5 hover:border-sp-red transition-colors cursor-pointer flex flex-col justify-between h-[180px] bg-slate-50/50 dark:bg-slate-900/20"
+                      className="border border-slate-200 dark:border-slate-800 rounded-2xl p-5 hover:border-sp-red transition-colors cursor-pointer flex flex-col justify-between h-[180px] bg-white"
                       onClick={() => toggleImpact(card.id)}
                     >
                       <div>
@@ -543,7 +543,7 @@ export default function Home() {
 
                 {/* Expanded Details Panel */}
                 {activeImpact !== null && (
-                  <div className="mt-8 p-6 bg-slate-50 dark:bg-slate-900/50 border border-sp-red/20 rounded-2xl animate-fadeIn">
+                  <div className="mt-8 p-6 bg-white border border-sp-red/20 rounded-2xl animate-fadeIn">
                     <h4 className="font-serif font-bold text-base text-sp-red mb-2">
                       {t(impactCards[activeImpact - 1].titleEn, impactCards[activeImpact - 1].titleHi)}
                     </h4>
@@ -560,7 +560,7 @@ export default function Home() {
         </section>
 
         {/* 4. JOURNEY (HORIZONTAL INTERACTIVE TIMELINE SECTION) */}
-        <section className="py-20 bg-slate-50 dark:bg-slate-900/20 border-b border-slate-100 dark:border-slate-900">
+        <section className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
           <div className="max-w-6xl mx-auto px-6">
             
             {/* Control line */}
@@ -606,7 +606,7 @@ export default function Home() {
             </div>
 
             {/* Details Card */}
-            <div className="max-w-4xl mx-auto border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-2 bg-slate-50/50 dark:bg-slate-900/30">
+            <div className="max-w-4xl mx-auto border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-2 bg-white">
               <div className="relative h-[200px] md:h-auto w-full" style={{ position: "relative" }}>
                 <Image
                   src={journeyEvents[journeyIndex].image}
@@ -637,7 +637,7 @@ export default function Home() {
         </section>
 
         {/* 5. STALWART SAYS SECTION */}
-        <section className="py-20 bg-slate-50 dark:bg-slate-900/20 border-b border-slate-100 dark:border-slate-900">
+        <section className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4 mb-10">
               <div className="bg-sp-red text-white text-xs sm:text-sm font-bold tracking-widest uppercase px-6 py-2 rounded-r-full rounded-l-md">
@@ -647,7 +647,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {stalwartQuotes.map((sq, idx) => (
-                <div key={idx} className="border border-slate-200 dark:border-slate-800 rounded-3xl p-6 flex items-center space-x-4 bg-white dark:bg-slate-950 shadow-sm">
+                <div key={idx} className="border border-slate-200 dark:border-slate-800 rounded-3xl p-6 flex items-center space-x-4 bg-white shadow-sm">
                   <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-sp-red" style={{ position: "relative" }}>
                     <Image
                       src={sq.image}
@@ -674,7 +674,7 @@ export default function Home() {
         </section>
 
         {/* 6. VIDEO GALLERY & DONATE SECTION */}
-        <section id="video-gallery" className="py-20 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-900">
+        <section id="video-gallery" className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
           <div className="max-w-6xl mx-auto px-6">
             
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -777,7 +777,7 @@ export default function Home() {
         </section>
 
         {/* 7. IMAGE GALLERY SECTION */}
-        <section className="py-20 bg-slate-50 dark:bg-slate-900/20 border-b border-slate-100 dark:border-slate-900">
+        <section className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
           <div className="max-w-6xl mx-auto px-6">
             
             <div className="bg-sp-red text-white text-xs font-bold tracking-widest uppercase px-6 py-2 rounded-r-full rounded-l-md w-max mb-6">
@@ -854,7 +854,7 @@ export default function Home() {
         </section>
 
         {/* 8. PRESS SECTION */}
-        <section className="py-20 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-900">
+        <section className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
           <div className="max-w-6xl mx-auto px-6">
             
             <div className="bg-sp-red text-white text-xs font-bold tracking-widest uppercase px-6 py-2 rounded-r-full rounded-l-md w-max mb-10">
@@ -866,7 +866,7 @@ export default function Home() {
               {/* Main clippings grid */}
               <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {mainPressItems.map((item) => (
-                  <div key={item.id} className="border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden bg-slate-50/50 dark:bg-slate-900/10 flex flex-col justify-between">
+                  <div key={item.id} className="border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden bg-white flex flex-col justify-between">
                     <div className="relative w-full h-[180px]" style={{ position: "relative" }}>
                       <Image
                         src={item.image}
@@ -917,7 +917,7 @@ export default function Home() {
         </section>
 
         {/* 9. EVENTS & WATCH LIVE SECTION */}
-        <section className="py-20 bg-slate-50 dark:bg-slate-900/20 border-b border-slate-100 dark:border-slate-900">
+        <section className="py-20 bg-white border-b border-slate-100 dark:border-slate-905">
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               
@@ -928,7 +928,7 @@ export default function Home() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="border border-slate-200 dark:border-slate-800 rounded-2xl p-4 flex items-center space-x-4 bg-white dark:bg-slate-950">
+                  <div className="border border-slate-200 dark:border-slate-800 rounded-2xl p-4 flex items-center space-x-4 bg-white">
                     <div className="p-3 bg-sp-red/10 rounded-xl text-sp-red shrink-0">
                       <Calendar className="w-6 h-6" />
                     </div>
@@ -940,7 +940,7 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="border border-slate-200 dark:border-slate-800 rounded-2xl p-4 flex items-center space-x-4 bg-white dark:bg-slate-950">
+                  <div className="border border-slate-200 dark:border-slate-800 rounded-2xl p-4 flex items-center space-x-4 bg-white">
                     <div className="p-3 bg-sp-red/10 rounded-xl text-sp-red shrink-0">
                       <Calendar className="w-6 h-6" />
                     </div>
@@ -987,7 +987,7 @@ export default function Home() {
         </section>
 
         {/* 10. FOLLOW (SOCIAL MEDIA CHANNELS + EMBEDDED FACEBOOK IFRAME) */}
-        <section id="contact" className="py-20 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-900">
+        <section id="contact" className="py-20 bg-white border-b border-slate-100 dark:border-slate-900">
           <div className="max-w-6xl mx-auto px-6">
             
             <div className="bg-sp-red text-white text-xs font-bold tracking-widest uppercase px-6 py-2 rounded-r-full rounded-l-md w-max mb-10">
@@ -997,7 +997,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               
               {/* Embedded Real Facebook Feed Page Plugin */}
-              <div className="border border-slate-200 dark:border-slate-800 rounded-3xl p-6 bg-slate-50/50 dark:bg-slate-900/10 flex flex-col items-center justify-center min-h-[500px]">
+              <div className="border border-slate-200 dark:border-slate-800 rounded-3xl p-6 bg-white flex flex-col items-center justify-center min-h-[500px]">
                 <div className="w-full flex items-center justify-between border-b border-slate-150 dark:border-slate-850 pb-3 mb-4">
                   <span className="text-xs font-bold text-slate-800 dark:text-white">Facebook Feed</span>
                   <a 
@@ -1022,7 +1022,7 @@ export default function Home() {
               </div>
 
               {/* Mock Instagram Feed */}
-              <div className="border border-slate-200 dark:border-slate-800 rounded-3xl p-6 bg-slate-50/50 dark:bg-slate-900/10 space-y-4 flex flex-col justify-between min-h-[500px]">
+              <div className="border border-slate-200 dark:border-slate-800 rounded-3xl p-6 bg-white space-y-4 flex flex-col justify-between min-h-[500px]">
                 <div className="w-full">
                   <div className="flex items-center justify-between border-b border-slate-150 dark:border-slate-850 pb-3 mb-4">
                     <div className="flex items-center space-x-2">
