@@ -363,10 +363,16 @@ export default function Home() {
       </div>
 
       {/* Right side floating action controls */}
-      <div className="fixed right-0 top-1/3 z-30 flex flex-col bg-sp-red text-white py-6 px-2 rounded-l-2xl space-y-5 shadow-xl select-none font-bold text-[10px] tracking-widest uppercase [writing-mode:vertical-lr] items-center">
-        <a href="#contact" className="hover:text-slate-200 transition-colors py-1 cursor-pointer">{t("Listen", "सुनें")}</a>
-        <a href="#video-gallery" className="hover:text-slate-200 transition-colors py-1 cursor-pointer">{t("Act", "कार्य")}</a>
-        <a href="#contact" className="hover:text-slate-200 transition-colors py-1 cursor-pointer">{t("Share", "साझा")}</a>
+      <div className="fixed right-0 top-1/3 z-30 flex flex-col bg-sp-red text-white py-4 px-1.5 rounded-l-xl shadow-xl select-none font-bold items-center">
+        <a href="#contact" className="block [writing-mode:vertical-rl] rotate-180 text-[10px] tracking-wider uppercase my-3.5 hover:text-slate-200 transition-colors cursor-pointer">
+          {t("Listen", "सुनें")}
+        </a> |
+        <a href="#video-gallery" className="block [writing-mode:vertical-rl] rotate-180 text-[10px] tracking-wider uppercase my-3.5 hover:text-slate-200 transition-colors cursor-pointer">
+          {t("Act", "कार्य")}
+        </a> | 
+        <a href="#contact" className="block [writing-mode:vertical-rl] rotate-180 text-[10px] tracking-wider uppercase my-3.5 hover:text-slate-200 transition-colors cursor-pointer">
+          {t("Share", "साझा")}
+        </a>
       </div>
 
       <main className="flex-grow pt-14">
