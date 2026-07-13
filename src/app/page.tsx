@@ -372,7 +372,7 @@ export default function Home() {
       <main className="flex-grow pt-14">
 
         {/* 1. HERO SLIDESHOW SECTION */}
-        <section id="home" className="relative min-h-[92vh] flex items-end justify-start overflow-hidden bg-slate-950 text-white py-20">
+        <section id="home" className="relative min-h-[60vh] md:min-h-[92vh] flex items-end justify-start overflow-hidden bg-slate-950 text-white py-20">
           <ParticleBackground />
           <WavingRibbon />
 
